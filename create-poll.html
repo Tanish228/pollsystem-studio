@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Poll - System Studio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        function addOptionField() {
+            const container = document.getElementById("options-container");
+            const div = document.createElement("div");
+            div.style.display = "flex";
+            div.innerHTML = `<input type="text" name="options[]" required placeholder="Enter option choice..." style="flex: 1; padding: 8px; margin-bottom: 10px;">`;
+            container.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+    <div class="container" style="max-width: 650px;">
+        <div class="card">
+            <h2>Launch New Poll Campaign</h2>
+            <form action="api/create_poll.php" method="POST">
+                <div style="margin-bottom:1rem;">
+                    <label>Poll Title Question</label>
+                    <input type="text" name="title" required style="width:100%; padding:8px; margin-top:5px;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label>Context Description</label>
+                    <textarea name="description" rows="3" style="width:100%; padding:8px; margin-top:5px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 15px; margin-bottom: 1rem;">
+                    <div style="flex: 1;">
+                        <label>Category</label>
+                        <input type="text" name="category" placeholder="e.g. tech, movies" required style="width:100%; padding:8px; margin-top:5px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Question Selection Mode</label>
+                        <select name="question_type" style="width:100%; padding:8px; margin-top:5px;">
+                            <option value="single">Single Choice (Radio Buttons)</option>
+                            <option value="multiple">Multiple Choice (Checkboxes)</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-bottom:1.5rem;">
+                    <label>Expiry Boundary Window</label>
+                    <input type="datetime-local" name="expiry_date" required style="width:100%; padding:8px; margin-top:5px;">
+                </div>
+
+                <div id="options-container" style="margin-bottom:1rem;">
+                    <label>Response Field Option Selections (Minimum 2)</label>
+                    <input type="text" name="options[]" required placeholder="Option 1" style="width:100%; padding:8px; margin-top:5px; margin-bottom: 10px;">
+                    <input type="text" name="options[]" required placeholder="Option 2" style="width:100%; padding:8px; margin-top:5px; margin-bottom: 10px;">
+                </div>
+                
+                <button type="button" onclick="addOptionField()" class="btn" style="background:#64748b; margin-bottom: 1.5rem;">+ Add Selection Choice Row</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="dashboard.php" style="text-decoration:none; color:#64748b;">Cancel</a>
+                    <button type="submit" class="btn">Publish Active System Poll</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

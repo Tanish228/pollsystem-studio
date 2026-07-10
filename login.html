@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Voting Suite</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 450px; margin-top: 10%;">
+        <div class="card">
+            <h2>Sign In</h2>
+            <form action="api/login.php" method="POST">
+                <div style="margin-bottom: 1rem;">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required style="width:100%; padding:8px; margin-top:5px;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label>Password</label>
+                    <input type="password" name="password" required style="width:100%; padding:8px; margin-top:5px;">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+            </form>
+            <p style="margin-top:15px; text-align:center;">New user? <a href="register.html">Create Account</a></p>
+        </div>
+    </div>
+</body>
+</html>
