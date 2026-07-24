@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-primary: #faf7ff;
+    --card-bg: #ffffff;
+    --text-main: #2d2a3d;
+    --accent: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --coral: #ff7d6b;
+    --mint: #3ddc97;
+    --sunny: #ffc857;
+    --border-color: #ece5fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(circle at 10% 10%, rgba(139,92,246,0.08), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(255,125,107,0.09), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(61,220,151,0.08), transparent 40%);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    animation: pageFadeIn 0.5s ease both;
+}
+
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+.navbar {
+    background: linear-gradient(120deg, var(--accent), #a679f8 60%, var(--coral));
+    background-size: 200% 200%;
+    animation: navGradientShift 8s ease infinite;
+    color: white;
+    padding: 1.1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px -4px rgba(139,92,246,0.4);
+}
+
+@keyframes navGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar h2 {
+    margin: 0;
+}
+
+.navbar a {
+    color: white;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    box-shadow: 0 8px 20px -6px rgba(139,92,246,0.18);
+    margin-bottom: 1.5rem;
+    border-top: 5px solid var(--mint);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
+    animation: fadeInUp 0.5s ease both;
+}
+
+.grid .card:nth-child(3n+1) { border-top-color: var(--mint); animation-delay: 0.05s; }
+.grid .card:nth-child(3n+2) { border-top-color: var(--coral); animation-delay: 0.15s; }
+.grid .card:nth-child(3n+3) { border-top-color: var(--accent); animation-delay: 0.25s; }
+
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 32px -8px rgba(139,92,246,0.3);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 6px 14px -4px rgba(139,92,246,0.5);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* soft shine sweep on hover */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::after {
+    left: 125%;
+}
+
+.progress-bar-container {
+    background: #f1eafe;
+    border-radius: 9999px;
+    height: 14px;
+    width: 100%;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    position: relative;
+    background: linear-gradient(90deg, var(--coral), var(--accent), var(--mint));
+    background-size: 200% 100%;
+    animation: navGradientShift 4s ease infinite;
+    height: 100%;
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #eee6fd;
+    color: #5b3fae;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    animation: popIn 0.4s ease both;
+}
+
+.grid .card:nth-child(3n+2) .badge { background: #ffe4de; color: #c14a33; }
+.grid .card:nth-child(3n+3) .badge { background: #d9f7ea; color: #1f8f61; }
+
+.btn-danger {
+    background-color: var(--coral);
+}
+.btn-danger:hover {
+    background-color: #e8593f;
+    animation: wiggle 0.3s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 0.5rem 1.1rem;
+    box-shadow: none;
+}
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.text-muted {
+    color: #7d7793;
+}
+
+.owner-actions {
+    display: flex;
+    gap: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"],
+textarea,
+select {
+    font-family: inherit;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #fdfcff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+}
+
+label {
+    font-weight: 500;
+    color: var(--text-main);
+}
